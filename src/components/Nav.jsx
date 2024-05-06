@@ -1,14 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logomark from '../assets/logomark.svg'
-import { fetchData } from '../helpers'
+import { deleteItem, fetchData } from '../helpers'
 import { toast } from 'react-toastify'
 
 const Nav = () => {
   const userName = fetchData('userName')
 
   const deleteUser = () => {
-    localStorage.removeItem('userName')
+    deleteItem('userName')
+    deleteItem('budgets')
+    deleteItem('expenses')
     toast.success('You have successfully delete user.')
     setTimeout(() => {
       window.location.reload()
